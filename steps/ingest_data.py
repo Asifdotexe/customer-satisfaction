@@ -3,11 +3,12 @@ import pandas as pd
 from zenml import step
 
 class IngestData:
-    """
-    Ingesting data from the data_path
-    """
+    """Ingesting data from the data_path"""
     def __init__(self, data_path: str):
-        """Initialize the IngestData class with the data path."""
+        """Initialize the IngestData class with the data path.
+        
+        :param data_path: path to the data
+        """
         self.data_path = data_path
 
     def get_data(self):
