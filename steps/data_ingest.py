@@ -5,9 +5,10 @@ from zenml import step
 class IngestData:
     """Ingesting data from the data_path"""
     def __init__(self, data_path: str):
-        """Initialize the IngestData class with the data path.
-        
-        :param data_path: path to the data
+        """Ingesting the data from data
+
+        Args:
+            data_path (str): Path to the data file
         """
         self.data_path = data_path
 
@@ -18,10 +19,15 @@ class IngestData:
     
 @step
 def ingest_data(data_path: str) -> pd.DataFrame:
-    """Ingesting the data from the data_path
-    
-    :params data_path: path to the data file
-    :return: pd.DataFrame containing the loaded data
+    """Ingest the data from the specified file
+
+    Args:
+        data_path (str): Path to the file
+    Raises:
+        e: Any exception that occurred
+
+    Returns:
+        pd.DataFrame: pandas DataFrame containing the ingested data
     """
     try:
         ingest_data = IngestData(data_path=data_path)
