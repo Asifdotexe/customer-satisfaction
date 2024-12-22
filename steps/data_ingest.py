@@ -14,7 +14,7 @@ class IngestData:
     def get_data(self):
         """Load data from the specified file and log the ingestion process."""
         logging.info(f"Ingesting data from {self.data_path}")
-        return pd.read_csv(self.data_path)
+        return pd.read_csv(self.data_path, parse_dates=True)
     
 @step
 def ingest_data(data_path: str) -> pd.DataFrame:
