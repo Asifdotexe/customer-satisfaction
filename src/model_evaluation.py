@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 import numpy as np
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score, root_mean_squared_error
 
 class Evaluation(abstractmethod):
     """Abstract class defining evaluation strategy"""
@@ -41,4 +41,17 @@ class R2Score(Evaluation):
         
         except Exception as e:
             logging.error(f"Error calculating R2 Score: {e}")
+            raise e
+        
+class RSME(Evaluation):
+    """Evaluate the model by calculating the root mean squared error"""
+    def calculate_scores(self, y_true, y_pred):
+        try:
+            logging.info("Calculating root mean squared error")
+            rmse = root_mean_squared_error(y_true, y_pred)
+            logging.info(f"Root Mean Squared Error: {rmse}")
+            return rmse
+        
+        except Exception as e:
+            logging.error(f"Error calculating root mean squared error: {e}")
             raise e
