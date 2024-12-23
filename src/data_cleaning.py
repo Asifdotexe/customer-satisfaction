@@ -33,10 +33,14 @@ class DataPreProcessStrategy(DataStrategy):
                 ],
                 axis=1,
             )
-            data["product_weight_g"].fillna(data["product_weight_g"].median(), inplace=True)
-            data["product_length_cm"].fillna(data["product_length_cm"].median(), inplace=True)
-            data["product_height_cm"].fillna(data["product_height_cm"].median(), inplace=True)
-            data["product_width_cm"].fillna(data["product_width_cm"].median(), inplace=True)
+            data["product_weight_g"].fillna(
+                data["product_weight_g"].median(), inplace=True)
+            data["product_length_cm"].fillna(
+                data["product_length_cm"].median(), inplace=True)
+            data["product_height_cm"].fillna(
+                data["product_height_cm"].median(), inplace=True)
+            data["product_width_cm"].fillna(
+                data["product_width_cm"].median(), inplace=True)
             # write "No review" in review_comment_message column
             data["review_comment_message"].fillna("No review", inplace=True)
 
@@ -64,3 +68,21 @@ class DataSplitStrategy(DataStrategy):
         except Exception as e:
             logging.error(f"Error in splitting data: {e}")
             raise e
+        
+class DataCleaning:
+    """
+    Class for cleaning data which processes the data and 
+    divides it into the train and test data
+    """
+    def __init__(self, data: pd.DataFrame, strategy: DataStrategy):
+        self.data = data
+        self.strategy = strategy
+        
+    def handle_data(self) -> Union[pd.DataFrame, pd.Series]:
+        """Handles data"""
+        try:
+            return self.strategy.handle_data(self.data)
+        except Exception as e:
+            logging.error(f"Error in handling data: {e}")
+            raise e
+    
