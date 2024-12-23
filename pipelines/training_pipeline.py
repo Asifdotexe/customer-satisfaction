@@ -1,6 +1,6 @@
 from zenml import pipeline
-from steps.data_ingest import ingest_data
-from steps.data_clean import clean_data
+from steps.data_ingest import ingest_df
+from steps.data_clean import clean_df
 from steps.model_train import train_model
 from steps.model_evaluate import evaluate_model
 
@@ -11,7 +11,7 @@ def training_pipeline(data_path: str):
     Args:
         data_path (str): Path to the data
     """
-    df = ingest_data(data_path)
-    clean_data(df)
+    df = ingest_df(data_path)
+    clean_df(df)
     train_model(df)
     evaluate_model(df)
