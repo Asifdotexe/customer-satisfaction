@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score, root_mean_squared_error
 
-class Evaluation(abstractmethod):
+class Evaluation(ABC):
     """Abstract class defining evaluation strategy"""
     @abstractmethod
     def calculate_scores(self, y_true: np.ndarray, y_pred: np.ndarray) -> None:
@@ -43,7 +43,7 @@ class R2Score(Evaluation):
             logging.error(f"Error calculating R2 Score: {e}")
             raise e
         
-class RSME(Evaluation):
+class RootMeanSquaredError(Evaluation):
     """Evaluate the model by calculating the root mean squared error"""
     def calculate_scores(self, y_true, y_pred):
         try:
