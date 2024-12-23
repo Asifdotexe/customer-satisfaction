@@ -31,6 +31,9 @@ class LinearRegressionModel(Model):
             model.fit(X_train, y_train)
             logging.info("Linear Regression model trained successfully")
             return model
+        
         except Exception as e:
             logging.error(f"Error training Linear Regression model: {e}")
             raise e
+        
+# Can implement more models here...
