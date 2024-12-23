@@ -13,7 +13,7 @@ class DataStrategy(ABC):
     
 class DataPreProcessStrategy(DataStrategy):
     """Strategy for preprocessing data"""
-    def handle(self, data: pd.DataFrame) -> pd.DataFrame:
+    def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
         """Preprocess data
 
         Args:
@@ -49,4 +49,18 @@ class DataPreProcessStrategy(DataStrategy):
         
         except Exception as e:
             logging.error(e)
+            raise e
+        
+class DataSplitStrategy(DataStrategy):
+    """Strategy for splitting the data into train and test"""
+    def handle_data(self, data: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
+        try:
+            # X contains the independent variables
+            X = data.drop(['review_score'], axis=1)
+            # y contains the dependent variable
+            y = data['review_score']
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2 random_state=42)
+            return X_train, X_test, y_train, y_test
+        except Exception as e:
+            logging.error(f"Error in splitting data: {e}")
             raise e
