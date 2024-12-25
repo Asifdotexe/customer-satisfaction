@@ -3,7 +3,7 @@ import pandas as pd
 from zenml import step
 
 from typing import Annotated
-from src.data_cleaning import DataCleaning, \
+from src.strategy_data_cleaning import DataCleaning, \
     DataPreProcessStrategy, DataSplitStrategy
 
 @step

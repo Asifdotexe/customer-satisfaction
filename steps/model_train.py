@@ -4,7 +4,7 @@ from zenml import step
 from sklearn.base import RegressionMixin
 
 from src.config import ModelNameConfig
-from src.model_development import LinearRegressionModel
+from src.strategy_model_development import LinearRegressionModel
 
 @step
 def train_model(

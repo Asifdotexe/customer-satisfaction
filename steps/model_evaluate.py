@@ -2,7 +2,7 @@ import logging
 import pandas as pd
 from zenml import step
 
-from src.model_evaluation import MeanSquaredError, RootMeanSquaredError, R2Score
+from src.strategy_model_evaluation import MeanSquaredError, RootMeanSquaredError, R2Score
 
 @step
 def evaluate_model(df: pd.DataFrame) -> None:
