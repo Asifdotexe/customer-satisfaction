@@ -1,5 +1,7 @@
 """
 This file contains all the constant variables for easy configuration
+- File paths
+- Model configurations
 """
 from zenml.steps import BaseParameters
 
