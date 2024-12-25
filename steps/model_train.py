@@ -1,7 +1,7 @@
 import logging
 import pandas as pd
 from zenml import step
-from sklearn.base import RegressionMixin
+from sklearn.base import RegressorMixin
 
 from src.config import ModelNameConfig
 from src.strategy_model_development import LinearRegressionModel
@@ -13,7 +13,7 @@ def train_model(
     y_train: pd.DataFrame,
     y_test: pd.Series,
     config: ModelNameConfig
-) -> RegressionMixin:
+) -> RegressorMixin:
     """Trains the machine learning model
 
     Args:
@@ -24,7 +24,7 @@ def train_model(
         config (ModelNameConfig): Model configuration containing the model configuration
 
     Returns:
-        RegressionMixin: Trained model
+        RegressorMixin: Trained model
     """
     model = None
     if config.model_name == "LinearRegression":

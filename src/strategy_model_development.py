@@ -1,7 +1,8 @@
 import logging
+from abc import ABC, abstractmethod
+
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-from abc import ABC, abstractmethod
 
 class Model(ABC):
     """Abstract class defining a model"""
