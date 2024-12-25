@@ -28,7 +28,7 @@ class LinearRegressionModel(Model):
             y_train (pd.Series): Pandas series containing the training dependent labels
         """
         try:
-            model = LinearRegressionModel(**kwargs)
+            model = LinearRegression(**kwargs)
             model.fit(X_train, y_train)
             logging.info("Linear Regression model trained successfully")
             return model
