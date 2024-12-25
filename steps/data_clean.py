@@ -1,8 +1,9 @@
 import logging
+from typing import Annotated
+
 import pandas as pd
 from zenml import step
 
-from typing import Annotated
 from src.strategy_data_cleaning import DataCleaning, \
     DataPreProcessStrategy, DataSplitStrategy
 
