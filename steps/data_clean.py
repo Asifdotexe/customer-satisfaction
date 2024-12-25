@@ -30,7 +30,7 @@ def clean_df(df: pd.DataFrame) -> tuple[
         processed_data = data_cleaning.handle_data()
         
         split_strategy = DataSplitStrategy()
-        data_cleaning = DataCleaning(process_strategy, split_strategy)
+        data_cleaning = DataCleaning(processed_data, split_strategy)
         X_train, X_test, y_train, y_test = data_cleaning.handle_data()
     except Exception as e:
         logging.info(f"Error in cleaning data: {e}")
