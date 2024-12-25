@@ -15,7 +15,7 @@ class DataStrategy(ABC):
 class DataPreProcessStrategy(DataStrategy):
     """Strategy for preprocessing data"""
     def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
-        """Preprocess data
+        """Preprocesses the ingested data
 
         Args:
             data (pd.DataFrame): Pandas dataframe containing ingested dataset
@@ -24,6 +24,8 @@ class DataPreProcessStrategy(DataStrategy):
             pd.DataFrame: Pandas dataframe containing preprocessed dataset
         """
         try:
+            # dropping all the unwanted columns for now, 
+            # these can be integrated in the program later.
             data = data.drop(
                 [
                     "order_approved_at",
@@ -34,6 +36,7 @@ class DataPreProcessStrategy(DataStrategy):
                 ],
                 axis=1,
             )
+            # filling the missing values with the median
             data["product_weight_g"].fillna(
                 data["product_weight_g"].median(), inplace=True)
             data["product_length_cm"].fillna(
@@ -87,3 +90,5 @@ class DataCleaning:
             logging.error(f"Error in handling data: {e}")
             raise e
     
+#TODO: Can add more strategies like encoding strategy and outlier detection strategy
+# to make the pipline more robust and use more features
