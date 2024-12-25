@@ -1,4 +1,5 @@
 import logging
+
 import pandas as pd
 from zenml import step
 
@@ -23,8 +24,6 @@ def ingest_df(data_path: str) -> pd.DataFrame:
 
     Args:
         data_path (str): Path to the file
-    Raises:
-        e: Any exception that occurred
 
     Returns:
         pd.DataFrame: pandas DataFrame containing the ingested data
