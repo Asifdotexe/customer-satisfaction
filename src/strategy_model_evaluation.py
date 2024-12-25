@@ -1,9 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 
-import pandas as pd
 import numpy as np
-
 from sklearn.metrics import mean_squared_error, r2_score, root_mean_squared_error
 
 class Evaluation(ABC):
@@ -20,7 +18,7 @@ class Evaluation(ABC):
     
 class MeanSquaredError(Evaluation):
     """Evaluate the model by calculate the mean squared error"""
-    def calculate_scores(self, y_true, y_pred):
+    def calculate_scores(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         try:
             logging.info("Calculating MeanSquaredError")
             mse = mean_squared_error(y_true, y_pred)
@@ -33,7 +31,7 @@ class MeanSquaredError(Evaluation):
         
 class R2Score(Evaluation):
     """Evaluate the model by calculate the R2 score"""
-    def calculate_scores(self, y_true, y_pred):
+    def calculate_scores(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         try:
             logging.info("Calculating R2 Score")
             r2 = r2_score(y_true, y_pred)
@@ -46,7 +44,7 @@ class R2Score(Evaluation):
         
 class RootMeanSquaredError(Evaluation):
     """Evaluate the model by calculating the root mean squared error"""
-    def calculate_scores(self, y_true, y_pred):
+    def calculate_scores(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         try:
             logging.info("Calculating root mean squared error")
             rmse = root_mean_squared_error(y_true, y_pred)
